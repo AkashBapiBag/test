@@ -46,60 +46,89 @@
 //     );
 // }
 
+import React, { useState } from "react";
+import "../css/Navbar.css";
 
+// export default function Navbar({ setPage }) {
+//     const [menuOpen, setMenuOpen] = useState(false);
 
-import React, { useState } from 'react';
-import '../css/Navbar.css';
+//     const toggleMenu = () => {
+//         setMenuOpen(!menuOpen);
+//     };
 
-export default function Navbar({ setPage }) {
-    const [menuOpen, setMenuOpen] = useState(false);
+//     return (
+//         <nav className="navbar">
+//             <div className="logo-container">
+//                 <button onClick={() => setPage('Home')} className="logo">
+//                     Subhajit Naskar
+//                 </button>
+//             </div>
+//             <div className={`menu-toggle ${menuOpen ? 'is-active' : ''}`} onClick={toggleMenu}>
+//                 <div className="hamburger"></div>
+//             </div>
+//             <ul className={`navbar-list ${menuOpen ? 'is-active' : ''}`}>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('Home')} className="navbar-link">
+//                         Home
+//                     </button>
+//                 </li>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('About')} className="navbar-link">
+//                         About
+//                     </button>
+//                 </li>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('Skills')} className="navbar-link">
+//                         Skills
+//                     </button>
+//                 </li>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('Projects')} className="navbar-link">
+//                         Projects
+//                     </button>
+//                 </li>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('Education')} className="navbar-link">
+//                         Education
+//                     </button>
+//                 </li>
+//                 <li className="navbar-item">
+//                     <button onClick={() => setPage('Contact')} className="navbar-link">
+//                         Contact
+//                     </button>
+//                 </li>
+//             </ul>
+//         </nav>
+//     );
+// }
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+const Navbar = () => {
+    const scrollToSection = (id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
     };
-
+  
     return (
-        <nav className="navbar">
-            <div className="logo-container">
-                <button onClick={() => setPage('Home')} className="logo">
-                    Subhajit Naskar
-                </button>
-            </div>
-            <div className={`menu-toggle ${menuOpen ? 'is-active' : ''}`} onClick={toggleMenu}>
-                <div className="hamburger"></div>
-            </div>
-            <ul className={`navbar-list ${menuOpen ? 'is-active' : ''}`}>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('Home')} className="navbar-link">
-                        Home
-                    </button>
-                </li>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('About')} className="navbar-link">
-                        About
-                    </button>
-                </li>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('Skills')} className="navbar-link">
-                        Skills
-                    </button>
-                </li>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('Projects')} className="navbar-link">
-                        Projects
-                    </button>
-                </li>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('Education')} className="navbar-link">
-                        Education
-                    </button>
-                </li>
-                <li className="navbar-item">
-                    <button onClick={() => setPage('Contact')} className="navbar-link">
-                        Contact
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <nav className="navbar fixed-top">
+        <div className="navbar-left">
+          <span className="navbar-name">Your Name</span>
+        </div>
+        <div className="navbar-right">
+          <button onClick={() => scrollToSection('home')} className="navbar-button">Home</button>
+          <button onClick={() => scrollToSection('about')} className="navbar-button">About</button>
+          <button onClick={() => scrollToSection('skills')} className="navbar-button">Skills</button>
+          <button onClick={() => scrollToSection('projects')} className="navbar-button">Projects</button>
+          <button onClick={() => scrollToSection('education')} className="navbar-button">Education</button>
+          <button onClick={() => scrollToSection('contact')} className="navbar-button">Contact</button>
+        </div>
+      </nav>
     );
-}
+  };
+  
+  export default Navbar;
